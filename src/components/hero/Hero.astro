@@ -1,0 +1,103 @@
+---
+import logo from "@/assets/imgs/logo.webp";
+import { getTranslations } from "../../i18n/translations";
+import "./Hero.css";
+
+const t = getTranslations("es");
+---
+
+<section
+    class="relative min-h-screen flex justify-center items-center text-center px-6 bg-[#050505] overflow-hidden py-16 md:py-0"
+    id="inicio"
+>
+    <div class="absolute inset-0 opacity-20">
+        <div
+            class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#7E23D9] rounded-full filter blur-[150px]"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-[#B679F2] rounded-full filter blur-[150px]"
+        >
+        </div>
+    </div>
+
+    <div
+        class="absolute inset-0 opacity-25 z-1
+    bg-[repeating-linear-gradient(0deg,rgba(255,255,255,0.18)_0px,rgba(255,255,255,0.18)_1px,transparent_1px,transparent_55px),repeating-linear-gradient(90deg,rgba(255,255,255,0.18)_0px,rgba(255,255,255,0.18)_1px,transparent_1px,transparent_55px)]"
+    >
+    </div>
+
+    <div class="absolute inset-0 z-2 pointer-events-none">
+        <div
+            class="absolute top-1/4 left-0 w-[380px] h-[520px] bg-[#7E23D9] rounded-full blur-[160px] opacity-40"
+        >
+        </div>
+    </div>
+
+    <div class="absolute inset-0 z-2 opacity-30 pointer-events-none">
+        <svg
+            class="w-full h-full animate-wiggle"
+            viewBox="0 0 800 400"
+            preserveAspectRatio="none"
+        >
+            <path
+                d="M0 250 L50 230 L120 280 L200 220 L280 260 L350 200 L430 240 L500 210 L580 260 L650 190 L720 240 L800 200"
+                fill="none"
+                stroke="#7E23D9"
+                stroke-width="3"
+                stroke-linecap="round"
+                opacity="0.8"></path>
+
+            <path
+                d="M0 300 L80 260 L150 310 L230 250 L310 290 L390 240 L470 280 L540 230 L620 270 L700 220 L780 260 L800 230"
+                fill="none"
+                stroke="#B679F2"
+                stroke-width="2"
+                stroke-linecap="round"
+                opacity="0.6"></path>
+        </svg>
+    </div>
+
+    <div class="relative z-5 max-w-3xl text-white">
+        <img
+            src={logo.src}
+            alt="Createwise Logo"
+            class="w-32 md:w-56 mx-auto mb-6 transition-transform duration-300 hover:scale-110 cursor-pointer"
+        />
+
+        <h1
+            data-i18n="hero.title"
+            class="font-extrabold text-transparent bg-clip-text
+            bg-linear-to-b from-white to-white
+            text-[2.2rem] md:text-[4.2rem] leading-none mb-3"
+        >
+            {t.hero.title}
+        </h1>
+
+        <h2
+            data-i18n="hero.subtitle"
+            class="text-base md:text-2xl font-semibold mb-3"
+        >
+            {t.hero.subtitle}
+        </h2>
+
+        <p
+            data-i18n="hero.description"
+            class="text-sm md:text-lg opacity-85 mb-8 px-4"
+        >
+            {t.hero.description}
+        </p>
+
+        <a
+            href="#contacto"
+            data-i18n="hero.cta"
+            class="inline-block bg-[#7E23D9] hover:bg-[#B679F2]
+            text-white font-semibold py-3 px-8 rounded-xl text-base md:text-lg
+            shadow-[0_4px_18px_rgba(126,35,217,0.4)]
+            hover:shadow-[0_8px_24px_rgba(182,121,242,0.55)]
+            transition-all hover:-translate-y-1 hover:scale-[1.03]"
+        >
+            {t.hero.cta}
+        </a>
+    </div>
+</section>

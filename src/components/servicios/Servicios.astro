@@ -1,0 +1,117 @@
+---
+import {
+  Target,
+  Rocket,
+  LineChart,
+  Users,
+  TrendingUp,
+  Award,
+} from "lucide-astro";
+import { getTranslations } from "../../i18n/translations";
+
+const t = getTranslations("es");
+
+const icons = [Target, Rocket, LineChart, Users, TrendingUp, Award];
+
+const services = t.servicios.items.map((item, index) => ({
+  ...item,
+  icon: icons[index],
+}));
+---
+
+<section
+  class="relative bg-[#050505] min-h-screen px-6 py-20 md:py-0 overflow-hidden flex items-center"
+  id="servicios"
+>
+  <div class="absolute inset-0 opacity-20">
+    <div
+      class="absolute top-0 left-1/4 w-96 h-96 bg-[#7E23D9] rounded-full filter blur-[120px]"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 right-1/4 w-96 h-96 bg-[#48168C] rounded-full filter blur-[120px]"
+    >
+    </div>
+  </div>
+
+  <div
+    class="absolute inset-0 opacity-25 z-1
+    bg-[repeating-linear-gradient(0deg,rgba(255,255,255,0.18)_0px,rgba(255,255,255,0.18)_1px,transparent_1px,transparent_55px),repeating-linear-gradient(90deg,rgba(255,255,255,0.18)_0px,rgba(255,255,255,0.18)_1px,transparent_1px,transparent_55px)]"
+  >
+  </div>
+
+  <div
+    class="relative max-w-7xl mx-auto z-10 w-full flex flex-col justify-center"
+  >
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="font-extrabold text-white text-3xl md:text-5xl mb-4">
+        <span data-i18n="servicios.title">{t.servicios.title}</span>
+        <span
+          data-i18n="servicios.titleHighlight"
+          class="text-transparent bg-clip-text bg-linear-to-r from-[#7E23D9] to-[#B679F2]"
+        >
+          {t.servicios.titleHighlight}
+        </span>
+        <span data-i18n="servicios.titleEnd">{t.servicios.titleEnd}</span>
+      </h2>
+      <div class="w-24 h-1 bg-linear-to-r from-[#7E23D9] to-[#B679F2] mx-auto">
+      </div>
+    </div>
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 cursor-pointer"
+    >
+      {
+        services.map((service, index) => {
+          const IconComponent = service.icon;
+          return (
+            <div class="group relative bg-linear-to-br from-[#48168C]/10 to-transparent border border-[#7E23D9]/20 rounded-2xl p-6 md:p-8 hover:border-[#B679F2]/50 transition-all duration-500 hover:scale-105 hover:shadow-[0_8px_32px_rgba(126,35,217,0.3)]">
+              <div class="absolute top-4 right-4 text-5xl md:text-6xl font-bold text-[#7E23D9]/10 group-hover:text-[#B679F2]/20 transition-colors duration-500">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+
+              <div class="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#7E23D9] rounded-tl-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              <div class="relative z-10">
+                <div class="mb-6 w-12 h-12 md:w-14 md:h-14 rounded-xl bg-linear-to-br from-[#7E23D9]/20 to-[#B679F2]/20 flex items-center justify-center border border-[#7E23D9]/30 group-hover:border-[#B679F2]/50 group-hover:scale-110 transition-all duration-500">
+                  <IconComponent class="w-6 h-6 md:w-7 md:h-7 text-[#B679F2] group-hover:text-[#F2F2F2] transition-colors duration-300" />
+                </div>
+
+                <h3
+                  data-i18n={`servicios.items.${index}.title`}
+                  class="text-lg md:text-xl font-bold text-[#F2F2F2] mb-3 md:mb-4 group-hover:text-[#B679F2] transition-colors duration-300"
+                >
+                  {service.title}
+                </h3>
+                <p
+                  data-i18n={`servicios.items.${index}.description`}
+                  class="text-[#F2F2F2]/70 text-sm leading-relaxed"
+                >
+                  {service.description}
+                </p>
+              </div>
+
+              <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-linear-to-r from-[#7E23D9] to-[#B679F2] group-hover:w-full transition-all duration-500" />
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .group:hover {
+    animation: float 3s ease-in-out infinite;
+  }
+</style>

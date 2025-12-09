@@ -1,0 +1,300 @@
+---
+import { getTranslations } from "../../i18n/translations";
+
+const t = getTranslations("es");
+
+const icons = ["👥", "👁️", "💰", "🎯", "📈", "💎"];
+const colors = ["from-[#7E23D9] to-[#B679F2]", "from-[#B679F2] to-[#7E23D9]"];
+
+const cases = t.casosExito.cases.map((case_, index) => ({
+  id: String(index + 1).padStart(2, "0"),
+  ...case_,
+  color: colors[index],
+  results: case_.results.map((result, idx) => ({
+    ...result,
+    icon: icons[index * 3 + idx],
+  })),
+}));
+---
+
+<section
+  class="relative bg-[#050505] min-h-screen px-6 overflow-hidden flex items-center py-20"
+  id="casos-de-exito"
+>
+  <div class="absolute inset-0 opacity-20">
+    <div
+      class="absolute top-0 right-1/3 w-[500px] h-[500px] bg-[#7E23D9] rounded-full filter blur-[140px]"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-[#B679F2] rounded-full filter blur-[140px]"
+    >
+    </div>
+  </div>
+
+  <div
+    class="absolute inset-0 opacity-25 z-1
+    bg-[repeating-linear-gradient(0deg,rgba(255,255,255,0.18)_0px,rgba(255,255,255,0.18)_1px,transparent_1px,transparent_55px),repeating-linear-gradient(90deg,rgba(255,255,255,0.18)_0px,rgba(255,255,255,0.18)_1px,transparent_1px,transparent_55px)]"
+  >
+  </div>
+
+  <div class="relative max-w-7xl mx-auto z-10 w-full">
+    <div class="text-center mb-14">
+      <h2 class="font-extrabold text-white text-4xl md:text-6xl mb-6 mt-8">
+        <span data-i18n="casosExito.title">{t.casosExito.title}</span>
+        <span
+          data-i18n="casosExito.titleHighlight"
+          class="text-transparent bg-clip-text bg-linear-to-r from-[#7E23D9] to-[#B679F2]"
+        >
+          {t.casosExito.titleHighlight}
+        </span>
+      </h2>
+      <p
+        data-i18n="casosExito.subtitle"
+        class="text-[#F2F2F2]/80 text-lg md:text-xl max-w-3xl mx-auto"
+      >
+        {t.casosExito.subtitle}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+      {
+        cases.map((case_, index) => (
+          <div
+            class="case-card group relative cursor-pointer"
+            style={`animation-delay: ${index * 0.2}s`}
+          >
+            <div class="relative bg-linear-to-br from-[#48168C]/30 to-transparent border border-[#7E23D9]/40 rounded-3xl p-8 md:p-10 hover:border-[#B679F2]/70 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_30px_90px_rgba(126,35,217,0.5)] backdrop-blur-sm overflow-hidden">
+              <div
+                class={`absolute inset-0 opacity-0 group-hover:opacity-20 bg-linear-to-br ${case_.color} transition-opacity duration-700`}
+              />
+
+              <div class="relative flex items-start justify-between mb-8">
+                <div class="flex-1">
+                  <div class="inline-flex items-center gap-2 mb-4">
+                    <span
+                      class={`px-4 py-1.5 bg-linear-to-r ${case_.color} rounded-full text-white text-sm font-bold`}
+                    >
+                      Caso {case_.id}
+                    </span>
+                    <span
+                      data-i18n={`casosExito.cases.${index}.region`}
+                      class="px-3 py-1 bg-[#7E23D9]/20 border border-[#7E23D9]/40 rounded-full text-[#B679F2] text-xs font-semibold"
+                    >
+                      {case_.region}
+                    </span>
+                  </div>
+
+                  <h3
+                    data-i18n={`casosExito.cases.${index}.client`}
+                    class="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-[#B679F2] transition-colors duration-300"
+                  >
+                    {case_.client}
+                  </h3>
+                  <p
+                    data-i18n={`casosExito.cases.${index}.campaign`}
+                    class="text-[#F2F2F2]/70 text-base md:text-lg"
+                  >
+                    {case_.campaign}
+                  </p>
+                </div>
+
+                <div class="hidden md:block">
+                  <div class="w-20 h-20 rounded-2xl bg-linear-to-br from-[#7E23D9]/20 to-[#B679F2]/20 border border-[#7E23D9]/30 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-500">
+                    <span class="text-3xl">
+                      {case_.type === "Exchange" ? "💱" : "📊"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="relative grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                {case_.results.map((result, idx) => (
+                  <div class="result-item bg-[#0a0a0a]/60 border border-[#7E23D9]/20 rounded-2xl p-5 hover:border-[#B679F2]/50 transition-all duration-300 backdrop-blur-sm group/item">
+                    <div class="text-3xl mb-2 group-hover/item:scale-110 transition-transform duration-300">
+                      {result.icon}
+                    </div>
+
+                    <div
+                      data-i18n={`casosExito.cases.${index}.results.${idx}.value`}
+                      class={`text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-linear-to-r ${case_.color} mb-2 leading-tight`}
+                    >
+                      {result.value}
+                    </div>
+
+                    <div
+                      data-i18n={`casosExito.cases.${index}.results.${idx}.label`}
+                      class="text-[#F2F2F2]/60 text-xs font-medium leading-tight"
+                    >
+                      {result.label}
+                    </div>
+
+                    <div
+                      class={`absolute inset-0 rounded-2xl bg-linear-to-br ${case_.color} opacity-0 group-hover/item:opacity-10 transition-opacity duration-300`}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <div class="relative bg-[#0a0a0a]/40 border border-[#7E23D9]/20 rounded-2xl p-6 backdrop-blur-sm">
+                <div class="flex items-start gap-4">
+                  <div class="text-3xl opacity-50 shrink-0">💬</div>
+                  <div>
+                    <p
+                      data-i18n={`casosExito.cases.${index}.testimonial`}
+                      class="text-[#F2F2F2]/80 italic text-sm leading-relaxed"
+                    >
+                      "{case_.testimonial}"
+                    </p>
+                    <p class="text-[#B679F2] text-xs mt-3 font-semibold">
+                      —{" "}
+                      <span data-i18n={`casosExito.cases.${index}.teamLabel`}>
+                        {case_.teamLabel}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="absolute top-6 right-6 w-12 h-12 border-t-2 border-r-2 border-[#B679F2]/0 group-hover:border-[#B679F2] rounded-tr-3xl transition-all duration-500" />
+              <div class="absolute bottom-6 left-6 w-12 h-12 border-b-2 border-l-2 border-[#B679F2]/0 group-hover:border-[#B679F2] rounded-bl-3xl transition-all duration-500" />
+
+              <div
+                class={`absolute -inset-1 bg-linear-to-r ${case_.color} rounded-3xl blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-700 -z-10`}
+              />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="relative">
+      <div
+        class="bg-linear-to-br from-[#48168C]/30 to-transparent border border-[#7E23D9]/40 rounded-3xl p-10 md:p-12 text-center backdrop-blur-sm hover:border-[#B679F2]/70 transition-all duration-500 hover:shadow-[0_30px_90px_rgba(126,35,217,0.5)] group overflow-hidden"
+      >
+        <div
+          class="absolute inset-0 opacity-0 group-hover:opacity-20 bg-linear-to-br from-[#7E23D9] to-[#B679F2] transition-opacity duration-700"
+        >
+        </div>
+
+        <div class="relative z-10">
+          <div class="inline-block mb-6">
+            <div
+              class="w-20 h-20 rounded-2xl bg-linear-to-br from-[#7E23D9] to-[#B679F2] flex items-center justify-center text-4xl shadow-[0_10px_40px_rgba(126,35,217,0.6)] group-hover:scale-110 transition-transform duration-500"
+            >
+              📈
+            </div>
+          </div>
+
+          <h3
+            data-i18n="casosExito.cta.title"
+            class="text-3xl md:text-4xl font-bold text-white mb-4"
+          >
+            {t.casosExito.cta.title}
+          </h3>
+          <p
+            data-i18n="casosExito.cta.subtitle"
+            class="text-[#F2F2F2]/70 text-lg mb-8 max-w-2xl mx-auto"
+          >
+            {t.casosExito.cta.subtitle}
+          </p>
+
+          <a
+            href="#influencers"
+            class="inline-flex items-center gap-3 px-10 py-5 bg-linear-to-r from-[#7E23D9] to-[#B679F2] rounded-2xl text-white font-bold text-lg hover:shadow-[0_20px_60px_rgba(126,35,217,0.7)] hover:scale-105 transition-all duration-500 group/btn"
+          >
+            <span data-i18n="casosExito.cta.button"
+              >{t.casosExito.cta.button}</span
+            >
+            <svg
+              class="w-6 h-6 group-hover/btn:translate-x-2 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+
+          <div class="mt-10 flex flex-wrap justify-center gap-8 text-center">
+            {
+              t.casosExito.cta.stats.map((stat, index) => (
+                <div>
+                  <div
+                    data-i18n={`casosExito.cta.stats.${index}.value`}
+                    class="text-3xl font-bold text-transparent bg-clip-text bg-linear-to-r from-[#7E23D9] to-[#B679F2] mb-1"
+                  >
+                    {stat.value}
+                  </div>
+                  <div
+                    data-i18n={`casosExito.cta.stats.${index}.label`}
+                    class="text-[#F2F2F2]/60 text-sm"
+                  >
+                    {stat.label}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div
+          class="absolute -inset-1 bg-linear-to-r from-[#7E23D9] to-[#B679F2] rounded-3xl blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-700 -z-10"
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .case-card {
+    animation: slideInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .result-item {
+    position: relative;
+    overflow: hidden;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .case-card:hover .result-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(182, 121, 242, 0.2),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+</style>

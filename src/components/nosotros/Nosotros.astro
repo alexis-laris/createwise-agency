@@ -1,0 +1,195 @@
+---
+import { getTranslations } from "../../i18n/translations";
+
+const t = getTranslations("es");
+
+const partners = [
+    {
+        name: "Binance",
+        logo: "https://cryptologos.cc/logos/bnb-bnb-logo.svg",
+        category: "Exchange",
+    },
+    {
+        name: "Crypto.com",
+        logo: "https://altcoinsbox.com/wp-content/uploads/2023/01/crypto.com-logo.png",
+        category: "Exchange",
+    },
+    {
+        name: "Bybit",
+        logo: "https://crypto-central.io/library/uploads/bybit_logo-min.png",
+        category: "Exchange",
+    },
+    {
+        name: "OKX",
+        logo: "https://mma.prnewswire.com/media/2014295/4383501/OKX_Logo_Logo.jpg",
+        category: "Exchange",
+    },
+    {
+        name: "XTB",
+        logo: "https://play-lh.googleusercontent.com/3NUP_1LZp77kW0QKXMkGD6QEQ6ZTB49LpMEW3sca-HiBuCNRNwtXjtUfuZLuWTv70Q",
+        category: "Broker",
+    },
+    {
+        name: "Capital.com",
+        logo: "https://s3-eu-west-1.amazonaws.com/tpd/logos/5a1d12d80000ff0005b1bec4/0x0.png",
+        category: "Trading",
+    },
+    {
+        name: "AXI",
+        logo: "https://play-lh.googleusercontent.com/dp47R_ZJsh3mQlcwOWDbQ0Jd_ZdCWrAkdo7fs117CBDd6Ho65e38Tt1_fZ60LUXBdZs",
+        category: "Platform",
+    },
+    {
+        name: "Shares.com",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLf4vc0lNwdlXiB_5JJvGUSihijdfVXg5jTA&s",
+        category: "Trading",
+    },
+    {
+        name: "Cloudbet",
+        logo: "https://cdn.banklesstimes.com/bt/content/uploads/2025/10/Cloudbet-1.png",
+        category: "Betting",
+    },
+    {
+        name: "Roboforex",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv9e4M5s-J3aSJK67w5zJaDnG9-IFmGFj32Q&s",
+        category: "Broker",
+    },
+    {
+        name: "Stake",
+        logo: "https://images.seeklogo.com/logo-png/43/1/stake-logo-png_seeklogo-436813.png",
+        category: "Betting",
+    },
+    {
+        name: "DEXRP",
+        logo: "https://altcoinsbox.com/wp-content/uploads/2023/01/xrp-logo.webp",
+        category: "DEX",
+    },
+    {
+        name: "Pionex",
+        logo: "https://pbs.twimg.com/media/GQbu0yFaIAYeJGa.png",
+        category: "Exchange",
+    },
+    {
+        name: "Margex",
+        logo: "https://cdn-1.webcatalog.io/catalog/margex/margex-icon-filled-256.png?v=1714775063965",
+        category: "Trading",
+    },
+];
+---
+
+<section
+    class="relative bg-[#050505] min-h-screen px-6 overflow-hidden flex items-center py-20"
+    id="nosotros"
+>
+    <div class="absolute inset-0 opacity-20">
+        <div
+            class="absolute top-0 left-1/4 w-96 h-96 bg-[#7E23D9] rounded-full filter blur-[120px]"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 right-1/4 w-96 h-96 bg-[#48168C] rounded-full filter blur-[120px]"
+        >
+        </div>
+    </div>
+
+    <div
+        class="absolute inset-0 opacity-25 z-1
+    bg-[repeating-linear-gradient(0deg,rgba(255,255,255,0.18)_0px,rgba(255,255,255,0.18)_1px,transparent_1px,transparent_55px),repeating-linear-gradient(90deg,rgba(255,255,255,0.18)_0px,rgba(255,255,255,0.18)_1px,transparent_1px,transparent_55px)]"
+    >
+    </div>
+
+    <div
+        class="relative max-w-7xl mx-auto z-10 w-full flex flex-col justify-center"
+    >
+        <div class="text-center mb-16">
+            <h2 class="font-extrabold text-white text-4xl md:text-5xl mb-6">
+                <span data-i18n="nosotros.title">{t.nosotros.title}</span>
+                <span
+                    data-i18n="nosotros.titleHighlight"
+                    class="text-transparent bg-clip-text bg-linear-to-r from-[#7E23D9] to-[#B679F2]"
+                >
+                    {t.nosotros.titleHighlight}
+                </span>
+            </h2>
+            <p
+                data-i18n="nosotros.subtitle"
+                class="text-[#F2F2F2]/80 text-lg md:text-xl max-w-3xl mx-auto mb-4"
+            >
+                {t.nosotros.subtitle}
+            </p>
+            <div
+                class="w-24 h-1 bg-linear-to-r from-[#7E23D9] to-[#B679F2] mx-auto"
+            >
+            </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-8 md:gap-10 items-center">
+            {
+                partners.map((partner, index) => (
+                    <div
+                        class="group relative flex items-center justify-center logo-item cursor-pointer w-28 md:w-32"
+                        style={`animation-delay: ${index * 0.1}s`}
+                    >
+                        <div class="relative w-28 h-28 md:w-32 md:h-32 flex items-center justify-center rounded-2xl bg-linear-to-br from-[#48168C]/10 to-transparent border border-[#7E23D9]/20 hover:border-[#B679F2]/50 transition-all duration-500 hover:scale-110 hover:shadow-[0_8px_32px_rgba(126,35,217,0.4)] backdrop-blur-sm">
+                            <div class="absolute inset-0 rounded-2xl bg-linear-to-br from-[#7E23D9]/0 to-[#B679F2]/0 group-hover:from-[#7E23D9]/20 group-hover:to-[#B679F2]/20 transition-all duration-500" />
+
+                            <img
+                                src={partner.logo}
+                                alt={partner.name}
+                                class="w-14 h-14 md:w-16 md:h-16 object-contain filter grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all duration-500 relative z-10"
+                                loading="lazy"
+                            />
+
+                            <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-[#7E23D9]/90 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm whitespace-nowrap">
+                                <span class="text-white text-xs font-semibold">
+                                    {partner.category}
+                                </span>
+                            </div>
+
+                            <div class="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-[#B679F2] rounded-tr-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
+            {
+                t.nosotros.stats.map((stat, index) => (
+                    <div class="text-center">
+                        <div
+                            data-i18n={`nosotros.stats.${index}.value`}
+                            class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-linear-to-r from-[#7E23D9] to-[#B679F2] mb-2"
+                        >
+                            {stat.value}
+                        </div>
+                        <div
+                            data-i18n={`nosotros.stats.${index}.label`}
+                            class="text-[#F2F2F2]/70 text-sm md:text-base"
+                        >
+                            {stat.label}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .logo-item {
+        animation: fadeInUp 0.6s ease-out forwards;
+        opacity: 0;
+    }
+</style>

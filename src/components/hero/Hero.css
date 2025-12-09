@@ -1,0 +1,17 @@
+@layer utilities {
+    @keyframes wiggle {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-12px);
+        }
+    }
+
+    .animate-wiggle {
+        animation: wiggle 6s ease-in-out infinite;
+    }
+}

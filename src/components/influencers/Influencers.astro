@@ -1,0 +1,477 @@
+---
+import { getTranslations } from "../../i18n/translations";
+
+const t = getTranslations("es");
+
+const influencers = [
+  {
+    id: 1,
+    name: "Dominguero",
+    roleKey: "cryptoAnalyst",
+    specialtyKey: "trader",
+    image:
+      "https://yt3.googleusercontent.com/ytc/AIdro_l_I_x_dfDCgP2plf-u0LVL_RTQRlA9k6yrTLP_DzayVd4=s900-c-k-c0x00ffffff-no-rj",
+    followers: "14.5M+",
+    regionKey: "europa",
+    stats: {
+      engagement: "8.5%",
+      avgViews: "120K",
+    },
+    socials: {
+      youtube: { url: "https://www.youtube.com/@dominguero", followers: "4M" },
+      instagram: {
+        url: "https://www.instagram.com/dominguero",
+        followers: "2M",
+      },
+      tiktok: {
+        url: "https://www.tiktok.com/@domingueroficial",
+        followers: "3.5M",
+      },
+      facebook: { url: "https://www.facebook.com/Dominguero", followers: "5M" },
+      telegram: { url: "", followers: "85K" },
+    },
+  },
+  {
+    id: 2,
+    name: "El Patrón",
+    roleKey: "traderInfluencer",
+    specialtyKey: "trader",
+    image:
+      "https://yt3.googleusercontent.com/ZMYpXmfdXm7SszOnju89mhfxx7EF4dGfZIrvA3E1MM43tTOCI6PI_1A-8znfAdMz9L4JVOYDHw=s176-c-k-c0x00ffffff-no-rj-mo",
+    followers: "1M+",
+    regionKey: "latam",
+    stats: {
+      engagement: "9.2%",
+      avgViews: "95K",
+    },
+    socials: {
+      youtube: {
+        url: "https://www.youtube.com/@PATRON_MORENITO",
+        followers: "300K",
+      },
+      instagram: {
+        url: "https://www.instagram.com/patron.morenito",
+        followers: "675K",
+      },
+      telegram: { url: "", followers: "38K" },
+    },
+  },
+  {
+    id: 3,
+    name: "Futuros Millonarios",
+    roleKey: "cryptoAnalyst",
+    specialtyKey: "marketAnalysis",
+    image:
+      "https://yt3.ggpht.com/oIkEci6ld33C3hZovJSYOFYtXfIgysg9fhH37dJbWjgOxUx9HJWfWYTtJSHMapnkEYYRlYAIeQ=s176-c-k-c0x00ffffff-no-rj-mo",
+    followers: "530K+",
+    regionKey: "europa",
+    stats: {
+      engagement: "7.8%",
+      avgViews: "200K",
+    },
+    socials: {
+      youtube: {
+        url: "https://www.youtube.com/@futuros_millonarios",
+        followers: "380K",
+      },
+      instagram: {
+        url: "https://www.instagram.com/futurosmillonariosvip",
+        followers: "70K",
+      },
+      telegram: { url: "", followers: "75K" },
+    },
+  },
+  {
+    id: 4,
+    name: "Roldan FX",
+    roleKey: "tradingCoach",
+    specialtyKey: "trader",
+    image:
+      "https://yt3.ggpht.com/JC8OKBtNq7ZTW33kCOL-wPzy9CnJJFwAsV_qr_WntTLAFcAQGdaz7cFvKfm_hAKWZXNP30JV=s176-c-k-c0x00ffffff-no-rj-mo",
+    followers: "500K+",
+    regionKey: "europa",
+    stats: {
+      engagement: "10.1%",
+      avgViews: "150K",
+    },
+    socials: {
+      youtube: { url: "https://www.youtube.com/@roldanfx", followers: "330K" },
+      instagram: {
+        url: "https://www.instagram.com/roldan_fx",
+        followers: "240K",
+      },
+      telegram: { url: "", followers: "16K" },
+    },
+  },
+  {
+    id: 5,
+    name: "Marko Trading",
+    roleKey: "cryptoInfluencer",
+    specialtyKey: "trader",
+    image:
+      "https://yt3.ggpht.com/HEZsD5jfZEiAiz4QzISM8y9QRKgNFG95WzL8I2ZQ4KI9dFs4GN_FmRosAObCcVslcWGaxjAv7g=s176-c-k-c0x00ffffff-no-rj-mo",
+    followers: "730K+",
+    regionKey: "latam",
+    stats: {
+      engagement: "8.9%",
+      avgViews: "110K",
+    },
+    socials: {
+      youtube: {
+        url: "https://www.youtube.com/@markotrading",
+        followers: "600K",
+      },
+      instagram: { url: "", followers: "85K" },
+      telegram: { url: "", followers: "45K" },
+    },
+  },
+  {
+    id: 6,
+    roleKey: "placeholder",
+    specialtyKey: "joinNetwork",
+    image: "",
+    regionKey: "global",
+    stats: {
+      engagement: "?",
+      avgViews: "?",
+    },
+    socials: {},
+    isPlaceholder: true,
+  },
+];
+
+const socialIcons = {
+  youtube: {
+    icon: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`,
+    color: "hover:text-red-500",
+  },
+  instagram: {
+    icon: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`,
+    color: "hover:text-pink-500",
+  },
+  tiktok: {
+    icon: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>`,
+    color: "hover:text-[#00f2ea]",
+  },
+  facebook: {
+    icon: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`,
+    color: "hover:text-blue-600",
+  },
+  telegram: {
+    icon: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>`,
+    color: "hover:text-[#0088cc]",
+  },
+};
+---
+
+<section
+  class="relative bg-[#050505] min-h-screen px-6 overflow-hidden flex items-center py-20"
+  id="influencers"
+>
+  <div class="absolute inset-0 opacity-20">
+    <div
+      class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#7E23D9] rounded-full filter blur-[150px]"
+    >
+    </div>
+    <div
+      class="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-[#B679F2] rounded-full filter blur-[150px]"
+    >
+    </div>
+  </div>
+
+  <div
+    class="absolute inset-0 opacity-25 z-1
+    bg-[repeating-linear-gradient(0deg,rgba(255,255,255,0.18)_0px,rgba(255,255,255,0.18)_1px,transparent_1px,transparent_55px),repeating-linear-gradient(90deg,rgba(255,255,255,0.18)_0px,rgba(255,255,255,0.18)_1px,transparent_1px,transparent_55px)]"
+  >
+  </div>
+
+  <div class="relative max-w-7xl mx-auto z-10 w-full">
+    <div class="text-center mb-14">
+      <h2 class="font-extrabold text-white text-4xl md:text-6xl mb-6 mt-8">
+        <span data-i18n="influencers.title">{t.influencers.title}</span>
+        <span
+          class="text-transparent bg-clip-text bg-linear-to-r from-[#7E23D9] to-[#B679F2]"
+          data-i18n="influencers.titleHighlight"
+          >{t.influencers.titleHighlight}</span
+        >
+      </h2>
+      <p
+        class="text-[#F2F2F2]/80 text-lg md:text-xl max-w-3xl mx-auto"
+        data-i18n="influencers.subtitle"
+      >
+        {t.influencers.subtitle}
+      </p>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
+      {
+        influencers.map((influencer, index) => (
+          <div
+            class="influencer-card w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-md cursor-pointer"
+            style={`animation-delay: ${index * 0.1}s`}
+          >
+            <div
+              class={`card-inner relative ${influencer.isPlaceholder ? "bg-linear-to-br from-[#7E23D9]/10 to-transparent border-2 border-dashed" : "bg-linear-to-br from-[#48168C]/30 to-transparent"} border border-[#7E23D9]/40 rounded-3xl p-6 backdrop-blur-sm overflow-hidden h-full transition-all duration-500`}
+            >
+              <div class="glow-overlay absolute inset-0 opacity-0 bg-linear-to-br from-[#7E23D9]/10 to-[#B679F2]/10 transition-opacity duration-500" />
+
+              <div class="relative mb-6 z-10">
+                <div class="relative w-32 h-32 mx-auto">
+                  <div class="avatar-glow absolute inset-0 rounded-full bg-linear-to-r from-[#7E23D9] to-[#B679F2] opacity-30 blur-xl transition-opacity duration-500" />
+
+                  <div class="avatar-border relative w-full h-full rounded-full border-4 border-[#7E23D9]/40 transition-all duration-500 overflow-hidden">
+                    {influencer.isPlaceholder ? (
+                      <div class="w-full h-full bg-linear-to-br from-[#7E23D9]/20 to-[#B679F2]/20 flex items-center justify-center">
+                        <svg
+                          class="w-16 h-16 text-[#B679F2]/50"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 4v16m8-8H4"
+                          />
+                        </svg>
+                      </div>
+                    ) : (
+                      <img
+                        src={influencer.image}
+                        alt={influencer.name}
+                        class="avatar-img w-full h-full object-cover grayscale transition-all duration-500"
+                      />
+                    )}
+                  </div>
+
+                  {influencer.isPlaceholder ? (
+                    <div class="badge-icon absolute -bottom-2 -right-2 w-10 h-10 bg-linear-to-br from-[#7E23D9] to-[#B679F2] rounded-full flex items-center justify-center shadow-lg transition-transform duration-300">
+                      <svg
+                        class="w-6 h-6 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  ) : (
+                    <div class="badge-icon absolute -bottom-2 -right-2 w-10 h-10 bg-linear-to-br from-[#7E23D9] to-[#B679F2] rounded-full flex items-center justify-center shadow-lg transition-transform duration-300">
+                      <svg
+                        class="w-6 h-6 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div class="text-center mb-6 relative z-10">
+                <h3
+                  class={`card-title text-2xl font-bold mb-2 transition-colors duration-300 ${influencer.isPlaceholder ? "text-transparent bg-clip-text bg-linear-to-r from-[#7E23D9] to-[#B679F2]" : "text-white"}`}
+                >
+                  {influencer.isPlaceholder ? (
+                    <span data-i18n="influencers.placeholder.name">
+                      {t.influencers.placeholder.name}
+                    </span>
+                  ) : (
+                    influencer.name
+                  )}
+                </h3>
+
+                <p
+                  class="text-[#F2F2F2]/70 text-sm mb-1"
+                  data-i18n={`influencers.roles.${influencer.roleKey}`}
+                >
+                  {
+                    t.influencers.roles[
+                      influencer.roleKey as keyof typeof t.influencers.roles
+                    ]
+                  }
+                </p>
+
+                <div
+                  class={`inline-block px-3 py-1 ${influencer.isPlaceholder ? "bg-[#7E23D9]/30 animate-pulse" : "bg-[#7E23D9]/20"} border border-[#7E23D9]/40 rounded-full text-[#B679F2] text-xs font-semibold mt-2`}
+                >
+                  <span
+                    data-i18n={`influencers.specialties.${influencer.specialtyKey}`}
+                  >
+                    {
+                      t.influencers.specialties[
+                        influencer.specialtyKey as keyof typeof t.influencers.specialties
+                      ]
+                    }
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex justify-center gap-6 mb-6 pb-6 border-b border-[#7E23D9]/20 relative z-10">
+                <div class="text-center">
+                  <div class="text-xl font-bold text-transparent bg-clip-text bg-linear-to-r from-[#7E23D9] to-[#B679F2]">
+                    {influencer.isPlaceholder ? (
+                      <span data-i18n="influencers.placeholder.followers">
+                        {t.influencers.placeholder.followers}
+                      </span>
+                    ) : (
+                      influencer.followers
+                    )}
+                  </div>
+                  <div
+                    class="text-[#F2F2F2]/50 text-xs"
+                    data-i18n="influencers.stats.followers"
+                  >
+                    {t.influencers.stats.followers}
+                  </div>
+                </div>
+                <div class="text-center">
+                  <div class="text-xl font-bold text-transparent bg-clip-text bg-linear-to-r from-[#7E23D9] to-[#B679F2]">
+                    {influencer.isPlaceholder ? (
+                      <span data-i18n="influencers.placeholder.engagement">
+                        {t.influencers.placeholder.engagement}
+                      </span>
+                    ) : (
+                      influencer.stats.engagement
+                    )}
+                  </div>
+                  <div
+                    class="text-[#F2F2F2]/50 text-xs"
+                    data-i18n="influencers.stats.engagement"
+                  >
+                    {t.influencers.stats.engagement}
+                  </div>
+                </div>
+                <div class="text-center">
+                  <div class="text-xl font-bold text-transparent bg-clip-text bg-linear-to-r from-[#7E23D9] to-[#B679F2]">
+                    {influencer.isPlaceholder ? (
+                      <span data-i18n="influencers.placeholder.avgViews">
+                        {t.influencers.placeholder.avgViews}
+                      </span>
+                    ) : (
+                      influencer.stats.avgViews
+                    )}
+                  </div>
+                  <div
+                    class="text-[#F2F2F2]/50 text-xs"
+                    data-i18n="influencers.stats.avgViews"
+                  >
+                    {t.influencers.stats.avgViews}
+                  </div>
+                </div>
+              </div>
+
+              <div class="relative z-10">
+                <div class="flex justify-center gap-3">
+                  {Object.entries(influencer.socials).map(
+                    ([platform, data]) => {
+                      type Platform = keyof typeof socialIcons;
+                      const typedPlatform = platform as Platform;
+                      return (
+                        <a
+                          href={data.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class={`w-11 h-11 bg-[#0a0a0a]/60 border border-[#7E23D9]/30 rounded-xl flex items-center justify-center text-[#F2F2F2]/60 ${socialIcons[typedPlatform].color} hover:border-[#B679F2]/60 hover:scale-110 hover:shadow-lg transition-all duration-300 group/social relative`}
+                          aria-label={`${platform} - ${data.followers} followers`}
+                        >
+                          <Fragment
+                            set:html={socialIcons[typedPlatform].icon}
+                          />
+
+                          <div class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-2 rounded-lg bg-black/90 text-white text-xs opacity-0 group-hover/social:opacity-100 transition-opacity duration-300 whitespace-nowrap border border-[#7E23D9]/40 pointer-events-none z-50">
+                            <div class="font-semibold capitalize">
+                              {platform}
+                            </div>
+                            <div class="text-[#B679F2]">
+                              {data.followers}{" "}
+                              <span data-i18n="influencers.socialLabels.followers">
+                                {t.influencers.socialLabels.followers}
+                              </span>
+                            </div>
+                            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-black/90 border-b border-r border-[#7E23D9]/40 rotate-45" />
+                          </div>
+                        </a>
+                      );
+                    },
+                  )}
+                </div>
+              </div>
+
+              <div class="absolute top-4 right-4 z-10">
+                <span
+                  class="px-3 py-1 bg-[#0a0a0a]/80 border border-[#7E23D9]/30 rounded-full text-[#B679F2] text-xs font-semibold backdrop-blur-sm"
+                  data-i18n={`influencers.regions.${influencer.regionKey}`}
+                >
+                  {
+                    t.influencers.regions[
+                      influencer.regionKey as keyof typeof t.influencers.regions
+                    ]
+                  }
+                </span>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .influencer-card:hover .card-inner {
+    transform: translateY(-8px);
+    border-color: rgba(182, 121, 242, 0.5);
+    box-shadow: 0 30px 90px rgba(126, 35, 217, 0.4);
+  }
+
+  .influencer-card:hover .glow-overlay {
+    opacity: 1;
+  }
+
+  .influencer-card:hover .avatar-glow {
+    opacity: 0.6;
+  }
+
+  .influencer-card:hover .avatar-border {
+    border-color: rgba(182, 121, 242, 0.8);
+  }
+
+  .influencer-card:hover .avatar-img {
+    filter: grayscale(0);
+  }
+
+  .influencer-card:hover .badge-icon {
+    transform: scale(1.1);
+  }
+
+  .influencer-card:hover .card-title {
+    color: #b679f2;
+  }
+
+  .influencer-card:hover .card-title.text-transparent {
+    transform: scale(1.05);
+  }
+</style>

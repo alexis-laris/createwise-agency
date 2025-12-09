@@ -1,0 +1,179 @@
+---
+import logo from "@/assets/imgs/logo.webp";
+import { Menu, X } from "lucide-astro";
+import { getTranslations } from "../../i18n/translations";
+import "./Navbar.css";
+
+const t = getTranslations("es");
+---
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a id="menuButton" class="logo-container" href="#inicio">
+            <img src={logo.src} alt="Logo" class="logo-img" />
+            <span class="logo-text">CREATEWISE</span>
+        </a>
+
+        <button id="hamburger" class="hamburger" aria-label="Abrir menú">
+            <Menu class="icon-menu" size="28" />
+            <X class="icon-close" size="28" />
+        </button>
+
+        <div class="nav-menu-wrapper">
+            <ul class="nav-links">
+                <li>
+                    <a class="menu-link" data-i18n="nav.inicio" href="#inicio">
+                        {t.nav.inicio}
+                    </a>
+                </li>
+                <li>
+                    <a
+                        class="menu-link"
+                        data-i18n="nav.servicios"
+                        href="#servicios"
+                    >
+                        {t.nav.servicios}
+                    </a>
+                </li>
+                <li>
+                    <a
+                        class="menu-link"
+                        data-i18n="nav.nosotros"
+                        href="#nosotros"
+                    >
+                        {t.nav.nosotros}
+                    </a>
+                </li>
+                <li>
+                    <a
+                        class="menu-link"
+                        data-i18n="nav.influencers"
+                        href="#influencers"
+                    >
+                        {t.nav.influencers}
+                    </a>
+                </li>
+                <li>
+                    <a
+                        class="menu-link"
+                        data-i18n="nav.casosExito"
+                        href="#casos-de-exito"
+                    >
+                        {t.nav.casosExito}
+                    </a>
+                </li>
+                <li>
+                    <a
+                        class="menu-link highlight"
+                        data-i18n="nav.contacto"
+                        href="#contacto"
+                    >
+                        {t.nav.contacto}
+                    </a>
+                </li>
+            </ul>
+
+            <div class="language-switcher">
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn active" data-lang="es">ES</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu">
+        <a class="menu-link" data-i18n="nav.inicio" href="#inicio">
+            {t.nav.inicio}
+        </a>
+        <a class="menu-link" data-i18n="nav.servicios" href="#servicios">
+            {t.nav.servicios}
+        </a>
+        <a class="menu-link" data-i18n="nav.nosotros" href="#nosotros">
+            {t.nav.nosotros}
+        </a>
+        <a class="menu-link" data-i18n="nav.influencers" href="#influencers">
+            {t.nav.influencers}
+        </a>
+        <a class="menu-link" data-i18n="nav.casosExito" href="#casos-de-exito">
+            {t.nav.casosExito}
+        </a>
+        <a
+            class="menu-link highlight"
+            data-i18n="nav.contacto"
+            href="#contacto"
+        >
+            {t.nav.contacto}
+        </a>
+
+        <div class="mobile-language-switcher">
+            <button class="lang-btn-mobile active" data-lang="es">ES</button>
+            <button class="lang-btn-mobile" data-lang="en">US</button>
+        </div>
+    </div>
+</nav>
+
+<div id="langAnimation" class="lang-animation hidden">
+    <img src={logo.src} alt="Loading Logo" class="lang-animation-logo" />
+</div>
+
+<script>
+    import { setupLanguageSystem } from "../../i18n/utils";
+
+    function setupLanguageAnimation() {
+        const overlay = document.getElementById("langAnimation");
+        const langButtons = document.querySelectorAll(
+            ".lang-btn, .lang-btn-mobile",
+        );
+
+        langButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                if (overlay) {
+                    overlay.classList.add("show");
+                }
+
+                setTimeout(() => {
+                    if (overlay) {
+                        overlay.classList.remove("show");
+                    }
+                }, 500);
+            });
+        });
+    }
+
+    function setupMobileMenu() {
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const menuLinks = mobileMenu?.querySelectorAll(".menu-link");
+
+        hamburger?.addEventListener("click", () => {
+            mobileMenu?.classList.toggle("active");
+            hamburger.classList.toggle("active");
+        });
+
+        menuLinks?.forEach((link) => {
+            link.addEventListener("click", () => {
+                mobileMenu?.classList.remove("active");
+                hamburger?.classList.remove("active");
+            });
+        });
+
+        document.addEventListener("click", (e) => {
+            const target = e.target as Node;
+            if (!hamburger?.contains(target) && !mobileMenu?.contains(target)) {
+                mobileMenu?.classList.remove("active");
+                hamburger?.classList.remove("active");
+            }
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => {
+            setupMobileMenu();
+            setupLanguageSystem();
+            setupLanguageAnimation();
+        });
+    } else {
+        setupMobileMenu();
+        setupLanguageSystem();
+        setupLanguageAnimation();
+    }
+</script>
