@@ -196,7 +196,7 @@ const t = getTranslations("es");
                     {t.contacto.formSection.title}
                 </h3>
 
-                <form class="space-y-4 flex-1 flex flex-col">
+                <form class="space-y-4 flex-1 flex flex-col" id="contactForm">
                     <div class="form-group">
                         <label
                             for="name"
@@ -207,7 +207,7 @@ const t = getTranslations("es");
                         </label>
                         <input
                             type="text"
-                            id="name"
+                            id="nombre"
                             name="name"
                             required
                             class="w-full px-4 py-3 bg-[#0a0a0a]/60 border border-[#7E23D9]/30 rounded-xl text-white placeholder-[#F2F2F2]/40 focus:outline-none focus:border-[#B679F2] focus:ring-2 focus:ring-[#B679F2]/20 transition-all duration-300"
@@ -246,8 +246,8 @@ const t = getTranslations("es");
                             {t.contacto.formSection.fields.message.label}
                         </label>
                         <textarea
-                            id="message"
-                            name="message"
+                            id="mensaje"
+                            name="mensaje"
                             required
                             rows="6"
                             class="w-full px-4 py-3 bg-[#0a0a0a]/60 border border-[#7E23D9]/30 rounded-xl text-white placeholder-[#F2F2F2]/40 focus:outline-none focus:border-[#B679F2] focus:ring-2 focus:ring-[#B679F2]/20 transition-all duration-300 resize-none"
@@ -259,6 +259,7 @@ const t = getTranslations("es");
 
                     <button
                         type="submit"
+                        id="submitBtn"
                         class="w-full px-8 py-4 bg-linear-to-r from-[#7E23D9] to-[#B679F2] rounded-xl text-white font-bold text-lg hover:shadow-[0_20px_60px_rgba(126,35,217,0.6)] hover:scale-[1.02] transition-all duration-500 flex items-center justify-center gap-3 group cursor-pointer"
                     >
                         <span data-i18n="contacto.formSection.submitButton"
@@ -277,6 +278,7 @@ const t = getTranslations("es");
                                 d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                         </svg>
                     </button>
+                    <p id="formMessage" class="text-center text-xs mt-2"></p>
                 </form>
             </div>
         </div>
@@ -303,3 +305,40 @@ const t = getTranslations("es");
         box-shadow: 0 0 0 3px rgba(126, 35, 217, 0.1);
     }
 </style>
+
+<script>
+    const form = document.getElementById("contactForm") as HTMLFormElement;
+    const msg = document.getElementById("formMessage") as HTMLParagraphElement;
+    const btn = document.getElementById("submitBtn") as HTMLButtonElement;
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        btn.disabled = true;
+        btn.textContent = "Enviando...";
+        btn.classList.add("opacity-60");
+        msg.textContent = "";
+
+        const formData = new FormData(form);
+
+        const response = await fetch("/api/contact", {
+            method: "POST",
+            body: formData,
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            msg.textContent = "✔ Tu mensaje ha sido enviado con éxito.";
+            msg.className = "text-center text-xs mt-2 text-[#05F2AF]";
+            form.reset();
+        } else {
+            msg.textContent = "❌ Ocurrió un error, intenta más tarde.";
+            msg.className = "text-center text-xs mt-2 text-red-500";
+        }
+
+        btn.disabled = false;
+        btn.textContent = "Enviar Mensaje";
+        btn.classList.remove("opacity-60");
+    });
+</script>
